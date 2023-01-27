@@ -1,0 +1,23 @@
+
+service: juanlescano-integrador-card
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs12.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:PutItem
+      Resource: arn:aws:dynamodb:us-east-1:450865910417:table/juanjoselescano-clients
+
+
+functions:
+  create-card:
+    handler: create-card.handler
+    description: 'An API that create new cards'
+    events:
+      - sqs:
+          arn: arn:aws:sqs:us-east-1:450865910417:juanjoselescano-createdCard
