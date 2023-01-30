@@ -10,7 +10,7 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-        - dynamodb:PutItem
+        - dynamodb:GetItem
       Resource: arn:aws:dynamodb:us-east-1:450865910417:table/juanjoselescano-clients
 
 
