@@ -4,7 +4,10 @@ const {emitCardCreated} = require('../service/emitCardCreated')
 
 module.exports = async (eventPayload, commandMeta) => {
     new CreateCardValidation (eventPayload,commandMeta);
-    let type = eventPayload.age > 65 ? 'Gold' : 'Classic'
+    const creditCardNumber = `${randomNumber(0000,9999)}-${randomNumber(0000,9999)}-${randomNumber(0000,9999)}-${randomNumber(0000,9999)}`
+    const expirationDate = `${randomNumber(01,12)}/${randomNumber(21,35)}`
+    const securityCode = `${randomNumber(000,999)}`
+    let type = eventPayload.age > 45 ? 'Gold' : 'Classic'
     const dbParams = {
         ExpressionAttributeNames: {
           "#C": "creditCard",
