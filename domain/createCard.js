@@ -40,7 +40,7 @@ module.exports = async (eventPayload, commandMeta) => {
         UpdateExpression: "SET #C = :c",
       };
     const result = {dbParams, status : 'Card created'}
-    await emitCardCreated(new CardCreatedEvent(result, commandMeta))
+    await emitCardCreated(new CardCreatedEvent(result))
     return {body: result};
 };
 
